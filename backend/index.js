@@ -1,9 +1,13 @@
+require('dotenv').config();
 const { Pool } = require('pg');
 const express = require('express')
+const httpStatusCodes = require('./utils/httpStatusCodes')
 
 const app = express()
+app.use(express.json())
 
-require('dotenv').config();
+
+
 let { PGHOST, PGDATABASE, PGUSER, PGPASSWORD } = process.env;
 const pool = new Pool({
   host: PGHOST,
@@ -19,14 +23,26 @@ const pool = new Pool({
 
 // login 
 app.post('/api/login',async (req, res) =>{
-        const {email , password} = req.body
+        const {email , password}  = req.body
+
         const client = await pool.connect();
         try {
-          const result = await client.query(`select u.email from users u where u.email = ${email}`);
-          if (result){
-            console.table(result.rows);
+          if (!(email && password)){
+          res.status(400).json({status:httpStatusCodes.FAIL , msg:"You have to insert your email and password"})
+          return
           }
-        }
+          const result = await client.query(`select u.email, u.password from users u where u.email = '${email}'`);
+          if (!result.rows.length){
+            res.status(400).json({status:httpStatusCodes.FAIL , msg:"User Not Found"})
+            return
+          }
+          const db_password = result.rows[0].password
+          if (password === db_password){
+              res.status(200).json({status:httpStatusCodes.SUCCESS , msg:"You have logged in successfully"})
+            }
+            else {res.status(500).json({status:httpStatusCodes.FAIL , msg:"Wrong Password"})}
+            return
+          }
         catch(error){
           console.log(error);
         }
