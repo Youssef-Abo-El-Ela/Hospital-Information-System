@@ -103,8 +103,17 @@ app.post('/api/register',async (req, res) =>{
 
 // edit user data 
 app.patch('/api/editUser',async(req,res)=>{
-  const {email,password}=req.body
-
+  const client =await pool.connect();
+  try{
+    const email = req.session.email
+    const {first_name, last_name, address, phone_number, facebook_link, linkedin_link, instagram_link} = req.body
+    await client.query(`update users set first_name = '${first_name}', last_name = '${last_name}', address = '${address}', phone_number = '${phone_number}', facebook_link = '${facebook_link}', linkedin_link = '${linkedin_link}', instagram_link = '${instagram_link}' where email = '${email}'`);
+    res.status(200).json({staus: httpStatusCodes.SUCCESS, msg:"User updated sucessfully"})
+  }catch(error){
+    console.log(error)
+  }finally {
+    client.release();
+  }
 })
 
 // get user data 
