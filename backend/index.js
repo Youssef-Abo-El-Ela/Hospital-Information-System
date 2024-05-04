@@ -113,12 +113,17 @@ app.get('/api/getData',async(req,res)=>{
       const client =await pool.connect();
       
   try {
-    const email =req.session.email
-  
+    const email = req.session.email
     const existingUserData = await client.query(`select * from users u where u.email = '${email}'`);
 
-    console.table(existingUserData);
-    }catch(error){
+    console.table(existingUserData.rows);
+    if (existingUserData.rows.length){
+      res.status(200).json({status:httpStatusCodes.SUCCESS , data:existingUserData.rows})
+    }
+    else {
+      res.status(404).json({status:httpStatusCodes.FAIL , msg:"Error in querying the database"})
+    }
+  }catch(error){
       console.log(error)
     }finally {
       client.release();
@@ -126,7 +131,17 @@ app.get('/api/getData',async(req,res)=>{
 
 })
 
-
+app.get('/api/logout' , (req, res)=>{
+  req.session.destroy(
+    (err)=>{
+      if (err){
+        res.status(500).json({status:httpStatusCodes.ERROR , msg:{err}})
+        return
+      }
+      res.status(200).json({status:httpStatusCodes.SUCCESS , msg:"Logged out Successfully"})
+    }
+  )
+})
 
 
 
