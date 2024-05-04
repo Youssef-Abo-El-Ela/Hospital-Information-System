@@ -1,0 +1,304 @@
+/* :root {
+  --dl-color-gray-500: #595959;
+  --dl-color-gray-700: #999999;
+  --dl-color-gray-900: #D9D9D9;
+  --dl-size-size-large: 144px;
+  --dl-size-size-small: 48px;
+  --dl-color-danger-300: #A22020;
+  --dl-color-danger-500: #BF2626;
+  --dl-color-danger-700: #E14747;
+  --dl-color-gray-black: #000000;
+  --dl-color-gray-white: #FFFFFF;
+  --dl-size-size-medium: 96px;
+  --dl-size-size-xlarge: 192px;
+  --dl-size-size-xsmall: 16px;
+  --dl-space-space-unit: 16px;
+  --dl-color-primary-100: #003EB3;
+  --dl-color-primary-300: #0074F0;
+  --dl-color-primary-500: #14A9FF;
+  --dl-color-primary-700: #85DCFF;
+  --dl-color-success-300: #199033;
+  --dl-color-success-500: #32A94C;
+  --dl-color-success-700: #4CC366;
+  --dl-size-size-xxlarge: 288px;
+  --dl-size-size-maxwidth: 1400px;
+  --dl-radius-radius-round: 50%;
+  --dl-space-space-halfunit: 8px;
+  --dl-space-space-sixunits: 96px;
+  --dl-space-space-twounits: 32px;
+  --dl-radius-radius-radius2: 2px;
+  --dl-radius-radius-radius4: 4px;
+  --dl-radius-radius-radius8: 8px;
+  --dl-space-space-fiveunits: 80px;
+  --dl-space-space-fourunits: 64px;
+  --dl-space-space-threeunits: 48px;
+  --dl-space-space-oneandhalfunits: 24px;
+}
+
+
+.input {
+  color: var(--dl-color-gray-black);
+  cursor: auto;
+  padding: 0.5rem 1rem;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+}
+.textarea {
+  color: var(--dl-color-gray-black);
+  cursor: auto;
+  padding: 0.5rem;
+  border-color: var(--dl-color-gray-black);
+  border-width: 1px;
+  border-radius: 4px;
+  background-color: var(--dl-color-gray-white);
+}
+.list {
+  width: 100%;
+  margin: 1em 0px 1em 0px;
+  display: block;
+  padding: 0px 0px 0px 1.5rem;
+  list-style-type: none;
+  list-style-position: outside;
+}
+.list-item {
+  display: list-item;
+}
+.teleport-show {
+  display: flex !important;
+  transform: none !important;
+}
+.Content {
+  font-size: 16px;
+  font-family: Inter;
+  font-weight: 400;
+  line-height: 1.15;
+  text-transform: none;
+  text-decoration: none;
+} */
+/* .Heading {
+  font-size: 32px;
+  font-family: Inter;
+  font-weight: 700;
+  line-height: 1.15;
+  text-transform: none;
+  text-decoration: none;
+} */
+
+body {
+    background-color: rgb(50, 48, 48);
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+  .rectangle5-container {
+    width: 65%;
+    height: 560px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white; 
+    border-radius: 50px; 
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1); 
+    position: relative;
+  }
+  
+  
+  .rectangle-container {
+    width: 1500px;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+    position: relative; /* Make it a reference for absolute positioning */
+    padding: 50px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+   
+  }
+  
+  
+  
+  .rectangle1-container {
+    width: 80%; /* Adjust width as needed */
+    height: 30%; /* Adjust height as needed */
+    background-color: #d7e0de90;
+    position: absolute;
+    top: 20px;
+    left: 50%; /* Place it in the center horizontally */
+    transform: translateX(-50%); /* Adjust to horizontally center it */
+    padding-bottom: 0%;
+  margin-bottom: 0%;
+  }
+  
+  .rectangle2-container {
+    
+    width: 90%; /* Adjust width as needed */
+    height: 7%; /* Adjust height as needed */
+    background-color: #d7e0de90;
+    position: absolute;
+  border-radius: 50px;
+    left: 50%; /* Place it in the center horizontally */
+    transform: translateX(-50%); /* Adjust to horizontally center it */
+  }
+  
+  .rectangle3-container {
+    width: 300px; /* Adjust width as needed */
+    height: 70%; /* Adjust height as needed */
+    background-color: #ffffff;
+    box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.258);
+    border-radius: 50px;
+    display: flex;
+    padding-left: 20px;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    top: 50%;
+    left: 50%;
+   
+  }
+  
+  
+  .col {
+    background-color: aqua; /* Set the background color of the column */
+    width: 50%; /* Set the width of the column to 50% */
+    height: 100%; /* Make the column height match its parent container */
+  }
+  
+  
+  .btng-custom {
+    background-color: transparent;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid white;
+    color: white;
+    border-radius: 50px; 
+    padding: 10px 20px; 
+    width: 5cm;
+  }
+  
+  .btng-custom:hover {
+    background-color: white;
+    color: #59C0AC; /* Change text color on hover */
+  }
+  
+  .btnw-custom {
+    background-color: transparent;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid #59C0AC;
+    color: #59C0AC;
+    border-radius: 50px; 
+    padding: 10px 20px; 
+    width: 5cm;
+     
+  
+  }
+  
+  .btnw-custom:hover {
+    background-color: #59C0AC;
+    color:white; /* Change text color on hover */
+  }
+  .cornerY-image {
+    position: absolute;
+    top: 82%;
+    right: 82%;
+    transform: translate(50%, -50%);
+    z-index: -1; /* Ensure the image is behind the rectangle */
+  }
+  
+  .cornerY-image img {
+    max-width: 500; /* Adjust as needed */
+    max-height: 500px; /* Adjust as needed */
+  }
+  
+  .cornerP-image {
+    position: absolute;
+    top: 15%;
+    left: 60%;
+    transform: translate(50%, -50%);
+    z-index: -1; /* Ensure the image is behind the rectangle */
+  }
+  
+  .cornerP-image img {
+    max-width: 500; /* Adjust as needed */
+    max-height: 500px; /* Adjust as needed */
+  }
+  
+  .image {
+    position: absolute;
+    top: 30%;
+    left: 180px;
+    transform: translate(50%, -50%);
+    z-index: 1; /* Ensure the image is behind the rectangle */
+  }
+  .image img {
+    max-width: 800; /* Adjust as needed */
+    max-height: 800px; /* Adjust as needed */
+  }
+  
+  .cornerprof-image {
+    position: absolute;
+    top: 87%;
+    right: 95%;
+    transform: translate(50%, -50%);
+    z-index: -1; /* Ensure the image is behind the rectangle */
+  }
+  
+  
+  .cornerprof-image img {
+    max-width: 500; /* Adjust as needed */
+    max-height: 500px; /* Adjust as needed */
+  }
+  
+  .cornerProff-image {
+    position: absolute;
+    top: 10%;
+    left: 27%;
+    transform: translate(50%, -50%);
+    z-index: -1; /* Ensure the image is behind the rectangle */
+  }
+  
+  .cornerProff-image img {
+    max-width: 500; /* Adjust as needed */
+    max-height: 500px; /* Adjust as needed */
+  }
+  
+  .table-container {
+    width: 80%;
+    margin: auto;
+  }
+  
+  .table-transparent {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table-transparent th,
+  .table-transparent td {
+    border: 1px solid transparent;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  
+  
+  .table-transparent td {
+    vertical-align: top;
+  }
+  
+  .table-transparent td ul {
+    padding-left: 0;
+  }
+  
+  .table-transparent td ul li {
+    list-style: none;
+  }
+  
