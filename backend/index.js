@@ -125,13 +125,18 @@ app.get('/api/getData',async(req,res)=>{
     const email = req.session.email
     const existingUserData = await client.query(`select * from users u where u.email = '${email}'`);
 
-    console.table(existingUserData.rows);
+    const existingPostsData = await client.query(`select * from posts p where p.user_email = '${email}'`);
+
     if (existingUserData.rows.length){
-      res.status(200).json({status:httpStatusCodes.SUCCESS , data:existingUserData.rows})
+      const existingUserDataRow=existingUserData.rows;
+      const existingPostsDataRow=existingPostsData.rows;
+    
+      res.status(200).json({status:httpStatusCodes.SUCCESS , data:{existingUserDataRow,existingPostsDataRow}})
     }
     else {
       res.status(404).json({status:httpStatusCodes.FAIL , msg:"Error in querying the database"})
     }
+  
   }catch(error){
       console.log(error)
     }finally {
@@ -172,6 +177,8 @@ app.post('/api/post' , async (req , res) => {
         client.release()
       }
   })
+
+  
 
 
 // app.get('/',async (req, res) =>{
