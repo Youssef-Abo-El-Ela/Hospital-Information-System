@@ -3,8 +3,21 @@ const { Pool } = require('pg');
 const express = require('express')
 const httpStatusCodes = require('./utils/httpStatusCodes')
 
+
 const app = express()
 app.use(express.json())
+
+const session =require('express-session');
+
+const secretKey=require('./utils/secretKey')
+
+app.use(session({
+  secret: secretKey,
+  resave: false,
+  saveUninitialized:true
+}));
+
+
 
 
 
@@ -38,6 +51,7 @@ app.post('/api/login',async (req, res) =>{
           }
           const db_password = result.rows[0].password
           if (password === db_password){
+              req.session.email=email;
               res.status(200).json({status:httpStatusCodes.SUCCESS , msg:"You have logged in successfully"})
             }
             else {res.status(500).json({status:httpStatusCodes.FAIL , msg:"Wrong Password"})}
@@ -88,11 +102,29 @@ app.post('/api/register',async (req, res) =>{
 
 
 // edit user data 
+app.patch('/api/editUser',async(req,res)=>{
+  const {email,password}=req.body
 
-
+})
 
 // get user data 
 
+app.get('/api/getData',async(req,res)=>{
+      const client =await pool.connect();
+      
+  try {
+    const email =req.session.email
+  
+    const existingUserData = await client.query(`select * from users u where u.email = '${email}'`);
+
+    console.table(existingUserData);
+    }catch(error){
+      console.log(error)
+    }finally {
+      client.release();
+    }
+
+})
 
 
 
