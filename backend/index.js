@@ -55,7 +55,36 @@ app.post('/api/login',async (req, res) =>{
 
 // register 
 
+app.post('/api/register',async (req, res) =>{
+  const {email , first_name, last_name, password, phone_number}  = req.body
+  console.log(email , first_name, last_name, password, phone_number)
 
+  const client = await pool.connect();
+
+  try {
+  if (!(email && password && first_name && last_name && phone_number)){
+    res.status(400).json({status:httpStatusCodes.FAIL , msg:"You have to insert all required fields"})
+    return
+    }
+  const existingUser = await client.query(`select u.email from users u where u.email = '${email}'`);
+  const existingNumber = await client.query(`select u.phone_number from users u where u.phone_number = '${phone_number}'`);
+  if(existingUser.rows.length){
+    res.json({status: httpStatusCodes.FAIL, msg:"email already exists"})
+    return 
+  }
+  if(existingNumber.rows.length){
+    res.json({status: httpStatusCodes.FAIL, msg:"phone number already exists"})
+    return 
+  }
+
+  await client.query(`insert into users(email, password, first_name, last_name, phone_number) values('${email}', '${password}' ,'${first_name}', '${last_name}','${phone_number}')`);
+  res.status(200).json({staus:httpStatusCodes.SUCCESS, msg:"user registered succssesfully"})
+  }catch(error){
+    console.log(error)
+  }finally {
+    client.release();
+  }
+})
 
 
 // edit user data 
