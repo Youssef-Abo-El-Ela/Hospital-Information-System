@@ -153,6 +153,26 @@ app.get('/api/logout' , (req, res)=>{
 })
 
 
+app.post('/api/post' , async (req , res) => {
+  const client = await pool.connect();
+  try{
+        if (req.session.email){
+        const {postData} = req.body
+        const email = req.session.email
+        await client.query(`insert into posts(user_email , post_content) values('${email}' , '${postData}')`)
+        res.status(200).json({status:httpStatusCodes.SUCCESS , msg:"Post Published Successfully"})
+      }
+        else{
+          throw new Error("You have to be logged in to post!") 
+        }
+      }catch(err){
+        res.status(400).json({status:httpStatusCodes.ERROR , msg:err.message})
+      }
+      finally{
+        client.release()
+      }
+  })
+
 
 // app.get('/',async (req, res) =>{
 
