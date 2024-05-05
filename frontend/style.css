@@ -166,6 +166,8 @@ body {
   }
   
   
+
+  
   .col {
     background-color: aqua; /* Set the background color of the column */
     width: 50%; /* Set the width of the column to 50% */
@@ -206,6 +208,24 @@ body {
     background-color: #59C0AC;
     color:white; /* Change text color on hover */
   }
+  .btnedit-custom {
+    background-color: #59C0AC;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 1px solid #59C0AC;
+    color: #ffffff;
+    border-radius: 50px; 
+    padding: 10px 20px; 
+    width: 5cm;
+     
+  
+  }
+  
+  .btnedit-custom:hover {
+    background-color: #ffffff;
+    color:#59C0AC; /* Change text color on hover */
+  }
+
   .cornerY-image {
     position: absolute;
     top: 82%;
