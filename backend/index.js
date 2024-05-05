@@ -3,9 +3,9 @@ const { Pool } = require('pg');
 const express = require('express')
 const httpStatusCodes = require('./utils/httpStatusCodes')
 
-
 const app = express()
 app.use(express.json())
+app.use(express.static('../frontend'))
 
 const session =require('express-session');
 
@@ -51,8 +51,8 @@ app.post('/api/login',async (req, res) =>{
           }
           const db_password = result.rows[0].password
           if (password === db_password){
-              req.session.email=email;
-              res.status(200).json({status:httpStatusCodes.SUCCESS , msg:"You have logged in successfully"})
+            req.session.email=email;
+            res.status(200).json({status:httpStatusCodes.SUCCESS , msg:"You have logged in successfully"})
             }
             else {res.status(500).json({status:httpStatusCodes.FAIL , msg:"Wrong Password"})}
             return
