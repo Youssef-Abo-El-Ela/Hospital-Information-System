@@ -4,6 +4,7 @@ const express = require('express')
 const httpStatusCodes = require('./utils/httpStatusCodes')
 const cors = require('cors')
 const app = express()
+const path = require('path')
 
 app.use(cors({
   origin: 'http://127.0.0.1:5500',
@@ -13,6 +14,8 @@ app.use(cors({
 app.use(express.json())
 app.use(express.static('../frontend'))
 
+let inialPath = path.join(__dirname, "frontend")
+app.use(express.static(inialPath))
 
 const session =require('express-session');
 
@@ -39,6 +42,17 @@ const pool = new Pool({
     require: true,
   },
 });
+
+
+// login page
+app.get('/login', (req, res) =>{
+  res.sendFile(path.join(__dirname, '../frontend/login.html'))
+})
+
+// home page
+app.get('/profile', (req, res) =>{
+  res.sendFile(path.join(__dirname, '../frontend/profile.html'))
+})
 
 
 // login 
