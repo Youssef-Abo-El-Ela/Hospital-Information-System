@@ -2,10 +2,17 @@ require('dotenv').config();
 const { Pool } = require('pg');
 const express = require('express')
 const httpStatusCodes = require('./utils/httpStatusCodes')
-
+const cors = require('cors')
 const app = express()
+
+app.use(cors({
+  origin: 'http://127.0.0.1:5500',
+  credentials: true
+}));
+
 app.use(express.json())
 app.use(express.static('../frontend'))
+
 
 const session =require('express-session');
 
@@ -35,7 +42,7 @@ const pool = new Pool({
 
 
 // login 
-app.post('/api/login',async (req, res) =>{
+app.post('/api/login',cors(),async (req, res) =>{
         const {email , password}  = req.body
 
         const client = await pool.connect();
@@ -118,11 +125,12 @@ app.patch('/api/editUser',async(req,res)=>{
 
 // get user data 
 
-app.get('/api/getData',async(req,res)=>{
+app.get('/api/getData', cors() , async(req,res)=>{
       const client =await pool.connect();
       
   try {
     const email = req.session.email
+    console.log(email);
     const existingUserData = await client.query(`select * from users u where u.email = '${email}'`);
 
     const existingPostsData = await client.query(`select * from posts p where p.user_email = '${email}'`);
