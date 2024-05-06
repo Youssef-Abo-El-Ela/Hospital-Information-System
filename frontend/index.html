@@ -33,7 +33,7 @@
                         <h6
                             style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin-bottom: 20px; color: white; font-weight:lighter;">
                             To stay in touch with us, please log in <br> with your personal information.</h6>
-                        <a href="login.html"><button class="btng-custom" style="margin: 20px;">Login</button></a>
+                        <a href="login.html"><button class="btng-custom" style="margin: 20px;" id="Registerlogin">Login</button></a>
                     </div>
                 </div>
                 <div class="col-7 d-flex justify-content-center align-items-center">
@@ -41,37 +41,34 @@
                         <h1 style="font-family:cursive; margin-bottom: 20px; color: #59C0AC; padding: 5px;">Create
                             account</h1>
                             
-                        <form action="Profile.html">
+                        <form action="Profile.html" style="margin-bottom: 0%;">
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="First name"
+                                <input type="text" class="form-control" placeholder="First name" id="firstName"
                                     style="background-color: #d7e0de90;">
                             </div>
                             <div class="mb-3">
-                                <input type="text" class="form-control" placeholder="Last name"
+                                <input type="text" class="form-control" placeholder="Last name" id="lastName"
                                     style="background-color: #d7e0de90;"">
                             </div>
                             <div class=" mb-3">
-                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                <input type="email" class="form-control" id="RegisterEmail"
                                     aria-describedby="emailHelp" placeholder="Email address"
                                     style="background-color: #d7e0de90;">
                                 <div id="emailHelp" class="form-text">We'll never share your email with anyone else.
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <input type="tel" class="form-control" id="Phone" placeholder="Phone number" pattern="[0-9]*""
+                                <input type="tel" class="form-control" id="RegisterPhone" placeholder="Phone number" pattern="[0-9]*""
                                     style="background-color: #d7e0de90;"">
                             </div>
                             <div class="mb-3">
-                                <input type="password" class="form-control" id="exampleInputPassword1"
+                                <input type="password" class="form-control" id="RegisterPassword"
                                     placeholder="Password" style="background-color: #d7e0de90;">
                             </div>
-                            <div class="mb-3 form-check">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                <label class="form-check-label" for="exampleCheck1">Save my password</label>
-                            </div>
-                            <a href="login.html"><button type="submit" class="btnw-custom"
+                            <a href="login.html"><button type="submit" class="btnw-custom" id="RegisterSignup"
                                     style="margin: 20px;">Sign up</button></a>
                         </form>
+                        <p style="margin-top: 0%; color:red"></p>
                     </div>
                 </div>
             </div>
