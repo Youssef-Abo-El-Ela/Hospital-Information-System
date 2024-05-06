@@ -75,3 +75,22 @@ for (var i = 0; i < data.existingPostsDataRow.length; i++) {
       }
 }
 getProfile()
+const edit_page_button = document.getElementById("editbutton")
+if(edit_page_button){
+
+    console.log("editpage")
+    edit_page_button.addEventListener("click",(event)=>{
+
+
+        
+        event.preventDefault();
+        console.log("hey")
+        fetch("http://localhost:4000/edit")
+        .then(()=>{
+            window.location.href='/edit'
+
+        })
+        
+    }
+
+)}

@@ -9,6 +9,8 @@ login_button.addEventListener("click" , (event)=>{
     handleLogin()
 })}
 
+
+
 function handleLogin(){
     const email = document.getElementById("email_input").value
     const password = document.getElementById("password_input").value

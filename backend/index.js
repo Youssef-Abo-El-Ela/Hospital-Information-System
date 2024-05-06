@@ -54,6 +54,9 @@ app.get('/profile', (req, res) =>{
   res.sendFile(path.join(__dirname, '../frontend/profile.html'))
 })
 
+app.get('/edit',(req,res)=>{
+  res.sendFile(path.join(__dirname, '../frontend/edit.html'))
+})
 
 // login 
 app.post('/api/login',cors(),async (req, res) =>{
