@@ -49,14 +49,12 @@ async function editProfile(){
              
             
         )}
-        const fileInput = document.getElementById('fileInput');
-        const file = fileInput.files[0]; 
         const editPhotoButton = document.getElementById('editPhoto')
-        editPhotoButton.addEventListener('click' , ()=>{
-            if (!file) {
-                alert('Please select a file.');
-                return;
-            }
+        editPhotoButton.addEventListener('click' , (event)=>{
+            event.preventDefault()
+            const fileInput = document.getElementById('fileInput');
+            console.log(fileInput);
+            const file = fileInput.files[0]; 
         
             const formData = new FormData();
             formData.append('image', file);
@@ -67,8 +65,8 @@ async function editProfile(){
             })
             .then(response => response.text())
             .then(imageUrl => {
-            const imageContainer = document.getElementById('imageContainer');
-            imageContainer.innerHTML = `<img src="${imageUrl}" alt="Uploaded Image">`; // Display the uploaded image
+            const imageContainer = document.getElementById('profile-image');
+            imageContainer.src = imageUrl; // Display the uploaded image
             })
         })
         

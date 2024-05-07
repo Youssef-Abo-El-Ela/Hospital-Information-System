@@ -14,7 +14,7 @@ app.use(cors({
 
 app.use(express.json())
 app.use(express.static('../frontend'))
-app.use(express.static('./upload'))
+app.use('/upload' , express.static(path.join(__dirname , 'upload')))
 
 let inialPath = path.join(__dirname, "frontend")
 app.use(express.static(inialPath))
@@ -230,7 +230,7 @@ app.post('/api/post' , async (req , res) => {
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/') // save uploaded files to the 'uploads' directory
+    cb(null, 'upload/') // save uploaded files to the 'uploads' directory
   },
   filename: function (req, file, cb) {
     cb(null, Date.now() + path.extname(file.originalname)); // rename uploaded files
