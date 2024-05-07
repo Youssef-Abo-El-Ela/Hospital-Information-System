@@ -26,15 +26,21 @@
                 <div class="col-5 d-flex justify-content-center align-items-center"
                     style="background-color: rgb(255, 255, 255); height:560px; border-radius: 50px; box-shadow: 10px 10px 50px rgba(0, 0, 0, 0.258);">
                     <div class="image"
-                        style="margin-top: 5px; margin-left: 5px; margin-right: 10px; left: 4.5px; top:150px">
+                        style="margin-top: 5px; margin-left: 5px; margin-right: 10px; top: -46%; left: 42px;">
                         <img src="Ellipse 9.png" style="width: 200px; height: 200px;">
+                        <img src="profile-icon.png" style="width: 180px; height: 180px; top:10px; left:10px;"
+                        id="profile-image">
                     </div>
+                  
 
                     <div class="text-center" style="margin-top: 150px;">
                         <form action="Profile.html">
+                            <div id="imageContainer"></div>
+                                <input type="file" id="fileInput" style="color: #59C0AC;"  >
                             <a href="login.html">
+                                
                                 <button class="btnedit-custom" id="editPhoto"
-                                    style="width: 2.8cm; margin-right: -230px; font-size: small;margin-bottom: 20px; ">Edit
+                                    style="width: 2.8cm; margin-right: -230px; font-size: small;margin-bottom: 20px; top: 150px; left: 10px; ">Edit
                                     photo</button>
                             </a>
                             <div class="mb-3" style="width: 7cm;">
@@ -57,11 +63,11 @@
                         </h1>
 
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col-3">
                                 <p style="margin-left: 25px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
                                     Address</p>
                             </div>
-                            <div class="col-10">
+                            <div class="col-9">
                                 <div class="mb-3">
                                     <input type="text" class="form-control" id="editAddress" placeholder="Address"
                                         style=" background-color: #d7e0de90; margin-left: 25px;">
@@ -70,14 +76,14 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col-3">
                                 <p style="margin-left: 25px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
                                     Phone</p>
                             </div>
-                            <div class="col-10">
+                            <div class="col-9">
                                 <div class="mb-3">
                                     <input type="tel" class="form-control" id="editPhone" placeholder="Phone number" pattern="[0-9]*"
-                                    style="background-color: #d7e0de90;">
+                                    style="background-color: #d7e0de90; margin-left: 25px;">
                                 </div>
                             </div>
                         </div>
@@ -87,15 +93,15 @@
                         </h1>
 
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col-3">
                                 <p style="margin-left: 25px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
                                     Facebook</p>
                             </div>
 
-                            <div class="col-10">
+                            <div class="col-9">
                                 <div class="mb-3">
                                     <input type="text" class="form-control" id="editFacebook"
-                                        placeholder="New facebook" style=" background-color: #d7e0de90; margin-left: 25px;">
+                                        placeholder="New facebook" style=" background-color: #d7e0de90;margin-left: 25px; ">
                                 </div>
                             </div>
                         </div>
@@ -115,11 +121,11 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-2">
+                            <div class="col-3">
                                 <p style="margin-left: 25px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-                                    Twitter</p>
+                                    LinkedIn</p>
                             </div>
-                            <div class="col-10">
+                            <div class="col-9">
                                 <div class="mb-3">
                                     <input type="text" class="form-control" placeholder="LinkedIn" id="editLinkedIn"
                                         style=" background-color: #d7e0de90; margin-left: 25px;">
