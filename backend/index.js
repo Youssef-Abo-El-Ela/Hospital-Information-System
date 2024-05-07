@@ -5,6 +5,7 @@ const httpStatusCodes = require('./utils/httpStatusCodes')
 const cors = require('cors')
 const app = express()
 const path = require('path')
+const multer = require('multer')
 
 app.use(cors({
   origin: 'http://127.0.0.1:5500',
@@ -13,6 +14,7 @@ app.use(cors({
 
 app.use(express.json())
 app.use(express.static('../frontend'))
+app.use(express.static('./upload'))
 
 let inialPath = path.join(__dirname, "frontend")
 app.use(express.static(inialPath))
@@ -225,6 +227,26 @@ app.post('/api/post' , async (req , res) => {
 //     }
 //   }
 // getPgVersion();
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'uploads/') // save uploaded files to the 'uploads' directory
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + path.extname(file.originalname)); // rename uploaded files
+  }
+});
+
+const upload = multer({ storage: storage });
+
+// Route to handle file upload
+app.post('/upload', upload.single('image'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).send('No file uploaded.');
+  }
+  const imageUrl = `http://localhost:4000/${req.file.path}`; // Get the URL of the uploaded image
+  res.send(imageUrl);
+});
 
 
 app.listen(4000, ()=>{
