@@ -1,6 +1,6 @@
 
 const submit_button = document.getElementById('RegisterSignup')
-const login_button = document.getElementById('')
+const login_button = document.getElementById('Registerlogin')
 
 if (submit_button){
     submit_button.addEventListener('click' , (event)=>{
@@ -42,3 +42,12 @@ if (submit_button){
     })
 
 }
+
+login_button.addEventListener('click', (event) =>{
+    event.preventDefault()
+    fetch('http://localhost:4000/api/login')
+    .then(() => {
+        window.location.href = '/login'
+        alert("back too login")
+    })
+})

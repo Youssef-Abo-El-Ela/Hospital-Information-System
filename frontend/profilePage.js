@@ -94,3 +94,13 @@ if(edit_page_button){
     }
 
 )}
+
+
+const logOutBtn = document.getElementById("logout")
+logOutBtn.addEventListener('click', (event) =>{
+    event.preventDefault()
+    fetch("http://localhost:4000/login")
+    .then(() =>{
+        window.location.href = '/login'
+    })
+})
