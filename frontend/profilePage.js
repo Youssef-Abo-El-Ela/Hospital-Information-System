@@ -48,10 +48,8 @@ for (var i = 0; i < data.existingPostsDataRow.length; i++) {
 
     // Set the top position dynamically
     newElement.style.top = topPosition + "px";
-
     // Set the innerHTML property with the HTML code
-    newElement.innerHTML = `<p id="post${i}">${data.existingPostsDataRow[i].post_date}: ${data.existingPostsDataRow[i].post_content}</p>`;
-
+    newElement.innerHTML = `<p id="post${i}">${data.existingPostsDataRow[i].post_date.slice(0,10)}: ${data.existingPostsDataRow[i].post_content}</p>`;
     // Increment the top position for the next element
     topPosition += 70; // You can adjust this value as needed
 
