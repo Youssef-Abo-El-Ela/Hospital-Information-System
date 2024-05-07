@@ -61,10 +61,15 @@ body {
   border-radius: 50px;
     left: 50%; /* Place it in the center horizontally */
     transform: translateX(-50%); /* Adjust to horizontally center it */
+<<<<<<< HEAD
     align-items: center; 
     align-content: center; 
     text-align: left; 
     padding: 30px;
+=======
+    align-items: center;
+    align-content: center;
+>>>>>>> d673c8cca4109937e2bb0cc52b09723cd04276b6
   }
   
   .rectangle3-container {
