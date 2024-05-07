@@ -129,10 +129,10 @@ body {
   
   .rectangle1-container {
     width: 80%; /* Adjust width as needed */
-    height: 30%; /* Adjust height as needed */
+    height: 25%; /* Adjust height as needed */
     background-color: #d7e0de90;
     position: absolute;
-    top: 20px;
+    top: 25px;
     left: 50%; /* Place it in the center horizontally */
     transform: translateX(-50%); /* Adjust to horizontally center it */
     padding-bottom: 0%;
@@ -253,13 +253,14 @@ body {
   }
   
   .image {
-    position: absolute;
-    top: 30%;
-    left: 180px;
+    position: relative;
+    top: -40%;
+    left: -5px;
     transform: translate(50%, -50%);
     z-index: 1; /* Ensure the image is behind the rectangle */
   }
   .image img {
+    position: absolute;
     max-width: 800; /* Adjust as needed */
     max-height: 800px; /* Adjust as needed */
   }
@@ -321,4 +322,9 @@ body {
   .table-transparent td ul li {
     list-style: none;
   }
-  
+  a{
+    text-decoration: none;
+  }
+  a:hover{
+    color: #D15544;
+  }

@@ -27,16 +27,18 @@
                 <div class="rectangle3-container" style="height: 600px;">
                     <div class="image" style="margin-top: 5px; margin-left: 5px; margin-right: 10px;">
                         <img src="Ellipse 9.png" style="width: 200px; height: 200px;">
+                        <img src="profile-icon.png" style="width: 180px; height: 180px; top:10px; left:10px;" id="profile-image">
                     </div>
                     <div class="text-center">
-                        <div class="rectangle2-container" style="top: 345px; width:23%; left: 385px;">
-                          <p id="profileName">text text</p>
+                        <div style="top: 345px; left: 385px; font-size: 25px; color: #D15544; font-weight:bold">
+                          <p id="profileName">Maya Habiba</p>
                         </div>
-                        <div class="rectangle2-container" style="top: 415px; width:23%; left: 385px;">
-                            <p id="profileEmail"></p>
+                        <div class="rectangle2-container" style="font-size: 18px; top: 415px; width:18%; left: 385px;color: #D15544;align-items: center;align-content: center;">
+                            <p id="profileEmail">judy@test.com</p>
                         </div>
-                        <div class="rectangle2-container" style="top: 485px; width:23%; left: 385px;">
-                            <p id="profilePosts"></p>
+                        <div class="rectangle2-container" style="font-size: 18px; top: 485px; width:18%; left: 385px;color: #D15544; align-items: center; align-content: center;">
+                            <p style="display: inline;">Profile posts:</p>
+                            <p id="profilePosts" style="display: inline;">0</p>
                         </div>
                     </div>
                 </div>
@@ -76,9 +78,9 @@
                     </div>
                 </div>
             </div> -->
-            <div class="table-container">
+            <div class="table-container" style="padding:10px; margin:5px;">
                 <table class="table-transparent">
-                  <thead  style="font-size: 20px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                  <thead  style="font-size: 25px; font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
                     <tr>
                       <th>User Information</th>
                       <th>Social Accounts</th>
@@ -89,9 +91,12 @@
                       <td>Name: Maya Mohamed <br> Email: Mayamoh@example.com <br> Age: 20</td>
                       <td>
                         <ul>
-                          <li id = "linkedIn_label">Twitter: @maya</li>
-                          <li id = "facebook_label">Facebook: Maya Mohamed</li>
-                          <li id = "instagram_label">Instagram: @Maya</li>
+                            <a href="" id="linkedIn_link" style="text-decoration: none; color:#369985;" onmouseover="this.style.color='#D15544'" onmouseout="this.style.color='#369985'">
+                          <li id = "linkedIn_label">LinkedIn: @maya</li> </a>
+                          <a href="" id="facebook_link" style="text-decoration: none; color:#369985;" onmouseover="this.style.color='#D15544'" onmouseout="this.style.color='#369985'">
+                          <li id = "facebook_label" >Facebook: Maya Mohamed</li> </a>
+                          <a href="" id="instagram_link" style="text-decoration: none; color:#369985;" onmouseover="this.style.color='#D15544'" onmouseout="this.style.color='#369985'">
+                          <li id = "instagram_label" >Instagram: @Maya</li></a>
                         </ul>
                       </td>
                     </tr>
@@ -100,7 +105,9 @@
               </div>
         </div>
         <div class="text-center" id = "posts_container">
-            
+                <div class="rectangle2-container" style=" top: 250px; align-items: center; align-content: center;">
+                    <p>judy Essam Liked Habiba Alaa's Post, Welcome To Our Page!</p>
+                </div> 
 
         </div>
 
