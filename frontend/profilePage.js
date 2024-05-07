@@ -36,6 +36,13 @@ async function getProfile(){
         twitterField.innerText = `${data.existingUserDataRow[0].linkedin_link}`
         facebookField.innerText = `${data.existingUserDataRow[0].facebook_link}`
         instagramField.innerText = `${data.existingUserDataRow[0].instagram_link}`
+
+        const profileAddress = document.getElementById('profileAddress');
+        const profilePhone = document.getElementById('profilePhone');
+
+        profileAddress.innerText = `${data.existingUserDataRow[0].address}`
+        profilePhone.innerText = `${data.existingUserDataRow[0].phone_number}`
+    
         const bigContainer = document.getElementById("posts_container")
 // Assuming bigContainer is already defined
 var topPosition = 250; // Initial top position
