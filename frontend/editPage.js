@@ -44,7 +44,6 @@ async function editProfile(){
                 console.error('Failed to update data');
             }
         })
-           
            }
           
              
@@ -81,3 +80,4 @@ async function editProfile(){
 
 editProfile();
 
+const doneBtn = document.getElementById("done")
