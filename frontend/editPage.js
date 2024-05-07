@@ -85,8 +85,8 @@ const doneBtn = document.getElementById("done")
 const back_button=document.getElementById("back")
 back_button.addEventListener('click', (event) =>{
     event.preventDefault()
-    fetch("http://localhost:4000/login")
+    fetch("http://localhost:4000/profile")
     .then(() =>{
-        window.location.href = '/login'
+        window.location.href = '/profile'
     })
 })
