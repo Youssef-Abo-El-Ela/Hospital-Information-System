@@ -58,6 +58,10 @@ app.get('/edit',(req,res)=>{
   res.sendFile(path.join(__dirname, '../frontend/edit.html'))
 })
 
+app.get('/register',(req,res)=>{
+  res.sendFile(path.join(__dirname, '../frontend/index.html'))
+})
+
 // login 
 app.post('/api/login',cors(),async (req, res) =>{
         const {email , password}  = req.body

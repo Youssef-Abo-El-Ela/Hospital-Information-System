@@ -119,6 +119,10 @@ async function getProfile(){
       }
 }
 
-function presentPageData(){
-    
-}
+const toSignUp = document.getElementById('toSignUp')
+
+toSignUp.addEventListener('click' , (event)=>{
+    event.preventDefault()
+    fetch('http://localhost:4000/api/register')
+    .then(() => window.location.href = '/register')
+})
