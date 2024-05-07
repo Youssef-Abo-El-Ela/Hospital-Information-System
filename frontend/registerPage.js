@@ -1,5 +1,6 @@
 
 const submit_button = document.getElementById('RegisterSignup')
+const login_button = document.getElementById('')
 
 if (submit_button){
     submit_button.addEventListener('click' , (event)=>{
@@ -10,30 +11,34 @@ if (submit_button){
         const password = document.getElementById("RegisterPassword").value
         const phone_number = document.getElementById("RegisterPhone").value
     
-        fetch('http://localhost:4000/api/register' , {
-            method : 'POST', 
-            headers: { 'Content-Type': 'application/json'},
-            body: JSON.stringify(data = {
-                email,
-                first_name,
-                last_name,
-                password,
-                phone_number
-            })
-        } )
-        .then ((res) =>
-        { if (res.ok){
-            if (res.status === "success"){
-            alert("Registeration done successfully");
-            // window.location.href= "/login"
-        }
-            else{
-                console.log(res);
+        const regesterUser = async () =>{
+            try{
+                const UserData = {
+                    email : email,
+                    first_name: first_name,
+                    last_name: last_name,
+                    password : password,
+                    phone_number: phone_number
+                };
+                const response = await fetch('http://localhost:4000/api/register', {
+                    method: 'POST', 
+                    headers:  {
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify(UserData)
+                })  
+                const responseData = await response.json()
+                if(responseData.status = "fail"){
+                    alert(responseData.msg)
+                }else if(responseData.status = "success"){
+                    alert(responseData.msg)
+                }
+                console.log(responseData)
+            }catch(err){
+                console.log('Error registring user: ', err)
             }
-        }
-        else {
-            alert("Danger")
-        }})
-        
+        }      
+        regesterUser()  
     })
+
 }
