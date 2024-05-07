@@ -38,7 +38,7 @@ async function getProfile(){
         instagramField.innerText = `${data.existingUserDataRow[0].instagram_link}`
         const bigContainer = document.getElementById("posts_container")
 // Assuming bigContainer is already defined
-var topPosition = 300; // Initial top position
+var topPosition = 250; // Initial top position
 
 for (var i = 0; i < data.existingPostsDataRow.length; i++) {
     var newElement = document.createElement("div");

@@ -1,5 +1,5 @@
 // const { response } = require("express")
-
+const loginErrorParagraph = document.getElementById('login_error')
 
 
 const login_button = document.getElementById("login_submit")
@@ -27,13 +27,17 @@ function handleLogin(){
     }).then (response =>{
         if(!response.ok){
             console.log(response.json)
+            loginErrorParagraph.innerText = "Incorrect email or password"
             throw new Error('error in network connection')
         }
         return response.json(data)
     }).then(responseData =>{
                 if (responseData.status === "success"){
                     getProfile()
-                }       
+                }else{
+                    loginErrorParagraph.innerText = "Incorrect email or password"
+                    alert('wronge password')
+                }
     })
 }
 
@@ -45,44 +49,6 @@ function handleLogin(){
 
 
 
-
-
-
-
-// function handleLogin(){
-//     console.log("WELCOME");
-//     const email = document.getElementById("email_input").value
-//     const password = document.getElementById("password_input").value
-
-//     data ={
-//         email,
-//         password
-//     }
-
-//     fetch('http://localhost:4000/api/login',{
-//         method:'POST',
-//         headers: {
-//             'Content-Type': 'application/json'
-//         },
-//         body: JSON.stringify(data)
-//     })
-//     .then(
-//         response=>{
-//             if (!response.ok){
-//                 console.log(response.json());
-//                 throw new Error ("Error in Network connection")
-//             }
-//             return response.json()
-//         }
-//     )
-//     .then(responseData =>{
-//         if (responseData.status === "success"){
-//             getProfile()
-//         }
-//     })
-//     .catch(err =>{
-//         console.log(err)})
-//     }
 
 async function getProfile(){
     try{
@@ -113,6 +79,7 @@ async function getProfile(){
             // Process the data as needed
           } else {
             console.error('Error:', responseData.msg); // Log error message if status is not successful
+
           }
     }catch (error) {
         console.error('Error fetching data:', error);
