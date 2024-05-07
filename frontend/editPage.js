@@ -81,3 +81,12 @@ async function editProfile(){
 editProfile();
 
 const doneBtn = document.getElementById("done")
+
+const back_button=document.getElementById("back")
+back_button.addEventListener('click', (event) =>{
+    event.preventDefault()
+    fetch("http://localhost:4000/login")
+    .then(() =>{
+        window.location.href = '/login'
+    })
+})
