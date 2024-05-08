@@ -1,5 +1,25 @@
+const { response } = require("express")
+
 async function editProfile(){
     try{
+        document.addEventListener('DOMContentLoaded' , (event)=>{
+            fetch("http://localhost:4000/api/data")
+            .then(response => response.json)
+            .then(()=>{
+                if (response.ok){
+                    const data = response.rows[0]
+                    const first_name = data.first_name
+                    const last_name = data.last_name
+
+                    docuemnt.getElementById('editFname').placeholder = first_name
+                    docuemnt.getElementById('editLname').placeholder = last_name
+
+                }
+            })
+        })
+
+
+
         const Done_button = document.getElementById("done")
         if(Done_button){
         console.log("Done")
@@ -38,15 +58,14 @@ async function editProfile(){
             if (response.ok) {
                 // Handle success
                 console.log('Data updated successfully');
+
                 // Redirect to a different page or perform any other action
             } else {
                 // Handle error
                 console.error('Failed to update data');
             }
         })
-           }
-          
-             
+        } 
             
         )}
         const editPhotoButton = document.getElementById('editPhoto')
@@ -72,7 +91,7 @@ async function editProfile(){
         
 }catch (error) {
         console.error('Error fetching data:', error);
-      }
+    }
 
     }
 

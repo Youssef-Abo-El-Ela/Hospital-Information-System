@@ -42,6 +42,9 @@ async function getProfile(){
 
         profileAddress.innerText = `${data.existingUserDataRow[0].address}`
         profilePhone.innerText = `${data.existingUserDataRow[0].phone_number}`
+
+        const profile_image = document.getElementById('profile-image')
+        profile_image.src = `${data.existingUserDataRow[0].image_url}`
     
         const bigContainer = document.getElementById("posts_container")
 // Assuming bigContainer is already defined

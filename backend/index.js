@@ -56,8 +56,22 @@ app.get('/profile', (req, res) =>{
   res.sendFile(path.join(__dirname, '../frontend/profile.html'))
 })
 
-app.get('/edit',(req,res)=>{
+app.get('/edit', (req, res) =>{
   res.sendFile(path.join(__dirname, '../frontend/edit.html'))
+})
+
+app.get('/data',async(req,res)=>{
+  const client = await pool.connect();
+  try{
+  const data = await client.query(`select * from users u where u.email = '${req.session.email}'`)
+  res.status(200).json({status:httpStatusCodes.SUCCESS , msg:"Success" , data})
+  }
+  catch(error){
+    res.status(400).json({status:httpStatusCodes.ERROR , msg:`${error}`})
+  }
+  finally{
+    client.release()
+  }
 })
 
 app.get('/register',(req,res)=>{
@@ -136,8 +150,13 @@ app.patch('/api/editUser',async(req,res)=>{
   const client =await pool.connect();
   try{
     const email = req.session.email
+    console.log(email);
     const {first_name, last_name, address, phone_number, facebook_link, linkedin_link, instagram_link} = req.body
-    await client.query(`update users set first_name = '${first_name}', last_name = '${last_name}', address = '${address}', phone_number = '${phone_number}', facebook_link = '${facebook_link}', linkedin_link = '${linkedin_link}', instagram_link = '${instagram_link}' where email = '${email}'`);
+    const old_phone_number = await client.query(`select u.phone_number from users u where email = '${email}'`)
+    if (old_phone_number === phone_number ){
+    await client.query(`update users set first_name = '${first_name}', last_name = '${last_name}', address = '${address}', facebook_link = '${facebook_link}', linkedin_link = '${linkedin_link}', instagram_link = '${instagram_link}', image_url = '${req.session.imageUrl}' where email = '${email}'`);
+    }
+    else await client.query(`update users set first_name = '${first_name}', last_name = '${last_name}', address = '${address}', phone_number = '${phone_number}' , facebook_link = '${facebook_link}', linkedin_link = '${linkedin_link}', instagram_link = '${instagram_link}', image_url = '${req.session.imageUrl}' where email = '${email}'`);
     res.status(200).json({staus: httpStatusCodes.SUCCESS, msg:"User updated sucessfully"})
   }catch(error){
     console.log(error)
@@ -245,6 +264,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
     return res.status(400).send('No file uploaded.');
   }
   const imageUrl = `http://localhost:4000/${req.file.path}`; // Get the URL of the uploaded image
+  req.session.imageUrl = imageUrl
   res.send(imageUrl);
 });
 
