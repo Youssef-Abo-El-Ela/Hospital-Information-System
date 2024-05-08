@@ -1,22 +1,35 @@
-const { response } = require("express")
+
 
 async function editProfile(){
     try{
-        document.addEventListener('DOMContentLoaded' , (event)=>{
-            fetch("http://localhost:4000/api/data")
-            .then(response => response.json)
-            .then(()=>{
-                if (response.ok){
-                    const data = response.rows[0]
-                    const first_name = data.first_name
-                    const last_name = data.last_name
-
-                    docuemnt.getElementById('editFname').placeholder = first_name
-                    docuemnt.getElementById('editLname').placeholder = last_name
-
-                }
-            })
+        document.addEventListener('DOMContentLoaded' , async ()=>{
+            const response = await fetch("http://localhost:4000/data", {
+                method: 'GET'
         })
+                const res = await response.json()
+                if (response.ok){
+
+                        const data_ = res.data.rows[0]
+                        console.log(data_);
+                        const first_name = data_.first_name
+                        const last_name = data_.last_name
+                        const address = data_.address
+                        const phone_number = data_.phone_number
+                        const facebook_link = data_.facebook_link
+                        const instagram_link = data_.instagram_link
+                        const linkedin_link = data_.linkedin_link
+                        const imageURL = data_.image_url
+                        document.getElementById('editFname').value = first_name
+                        document.getElementById('editLname').value = last_name
+                        document.getElementById('editAddress').value = address
+                        document.getElementById('editPhone').value = phone_number
+                        document.getElementById('editFacebook').value = facebook_link
+                        document.getElementById('editInstagram').value = instagram_link
+                        document.getElementById('editLinkedIn').value = linkedin_link
+                        document.getElementById('profile-image').src = imageURL
+                    }
+            })
+        
 
 
 
@@ -35,7 +48,7 @@ async function editProfile(){
             const facebook=document.getElementById('editFacebook').value;
             const instagram=document.getElementById('editInstagram').value;
             const linkedIn=document.getElementById('editLinkedIn').value;
-            
+            const imageURL = document.getElementById('profile-image').src
 
         fetch("http://localhost:4000/api/editUser", {
             method: 'PATCH',
@@ -49,9 +62,8 @@ async function editProfile(){
                 phone_number:phone,
                 facebook_link:facebook,
                 linkedin_link: linkedIn,
-                instagram_link:instagram
-                
-    
+                instagram_link:instagram,
+                image_url:imageURL
             })
         })
         .then(response => {

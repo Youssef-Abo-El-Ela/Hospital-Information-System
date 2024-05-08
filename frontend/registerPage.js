@@ -48,6 +48,5 @@ login_button.addEventListener('click', (event) =>{
     fetch('http://localhost:4000/api/login')
     .then(() => {
         window.location.href = '/login'
-        alert("back too login")
     })
 })
