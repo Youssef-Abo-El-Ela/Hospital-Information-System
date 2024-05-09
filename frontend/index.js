@@ -1,4 +1,3 @@
-// const { response } = require("express")
 const loginErrorParagraph = document.getElementById('login_error')
 
 
@@ -54,31 +53,21 @@ async function getProfile(){
     try{
         const response = await fetch('http://localhost:4000/api/getData', {
             method: 'GET',
-            credentials: 'include', // Include credentials
-        }); // Replace '/api/getData' with your actual endpoint URL
+            credentials: 'include', 
+        }); 
         const responseData = await response.json();
         if (response.ok) {
-            const { data } = responseData; // Assuming the response contains a 'data' property
-            // await fetch('http://localhost:4000/profile')
+            const { data } = responseData;
             location.href = '/profile'
             fetch('http://localhost:4000/profile')
             location.href = '/profile'
             const nameField = document.getElementById("profileName").querySelector(".container .col-6 .row .rectangle3-container .text-center .rectangle2-container ");
             nameField.innerText("dummy data")
-            // document.getElementById('profileEmail').innerText()
-            // document.getElementById('profilePosts').innerText()
-            // let textNode = document.createTextNode("dataText 123456")
-            // nameField.appendChild(textNode) 
-
-
-
-
-
-
+            
             console.log('User data:', data);
-            // Process the data as needed
+           
           } else {
-            console.error('Error:', responseData.msg); // Log error message if status is not successful
+            console.error('Error:', responseData.msg); 
 
           }
     }catch (error) {

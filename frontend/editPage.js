@@ -68,12 +68,12 @@ async function editProfile(){
         })
         .then(response => {
             if (response.ok) {
-                // Handle success
+            
                 console.log('Data updated successfully');
 
-                // Redirect to a different page or perform any other action
+            
             } else {
-                // Handle error
+            
                 console.error('Failed to update data');
             }
         })
