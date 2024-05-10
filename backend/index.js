@@ -207,7 +207,7 @@ app.get('/api/logout' , (req, res)=>{
   )
 })
 
-
+// upload post
 app.post('/api/post' , async (req , res) => {
   const client = await pool.connect();
   try{
@@ -231,22 +231,8 @@ app.post('/api/post' , async (req , res) => {
   
 
 
-// app.get('/',async (req, res) =>{
 
-// })
-
-
-// async function getPgVersion() {
-//     const client = await pool.connect();
-//     try {
-//       const result = await client.query("select * from users");
-//       console.table(result.rows);
-//     } finally {
-//       client.release();
-//     }
-//   }
-// getPgVersion();
-
+// middleware to handle photo uploading
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'upload/') // save uploaded files to the 'uploads' directory
