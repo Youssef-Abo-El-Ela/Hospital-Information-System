@@ -1,3 +1,5 @@
+// https://github.com/sbme-tutorials/his-finalproject-database_sbe_spring24_team2.git
+
 require('dotenv').config();
 const { Pool } = require('pg');
 const express = require('express')
